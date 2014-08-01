@@ -24,20 +24,7 @@ public class Board
 	
 	public ArrayList<Combination> blackCombinations = new ArrayList<Combination>();
 	public ArrayList<Combination> whiteCombinations = new ArrayList<Combination>();
-	
-	/**
-	 * Returns the opponents colornr
-	 * @param myColor
-	 * @return
-	 */
-	public Player getOpponent(Player player)
-	{
-		if (player == Player.BLACK)
-			return Player.WHITE;
-		else
-			return Player.BLACK;
-	}
-	
+
 	/**
 	 * returns black or white stones depending on the given coloNr.
 	 */

@@ -58,21 +58,17 @@ public class Combination
 	 * Speeds up the pattern selection
 	 * Returns false if no combination can be used
 	 */
-	public static boolean preCheck(Board b, int direction, int length, Stone s)
+	public static boolean preCheck(Board b, int direction, int length, Stone stone)
 	{
-		if (s == null)
+		if (stone == null)
 			return true;
 		
-		Player openentColor;
-		if (s.player == Player.BLACK)
-			openentColor = Player.WHITE;
-		else
-			openentColor = Player.BLACK;
+		Player openentColor = Player.getOpponent(stone.player);
 		
 		// check for each position of the given length
 		for (int d = 1;d<length;d++)
 		{
-			Position tryPos = Direction.getPosInDirection(s.x, s.y, direction, d);
+			Position tryPos = Direction.getPosInDirection(stone.x, stone.y, direction, d);
 			if (tryPos == null)
 				return false;
 			if (b.field[tryPos.y][tryPos.x] == openentColor)

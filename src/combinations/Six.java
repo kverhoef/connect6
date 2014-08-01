@@ -12,10 +12,7 @@ import logic.Stone;
  */
 public class Six extends Combination
 {
-	
-	/**
-	 * Constructor
-	 */
+
 	public Six(Stone stone1, Stone stone2, Stone stone3, Stone stone4, Stone stone5, Stone stone6)
 	{
 		// Combination and type not important

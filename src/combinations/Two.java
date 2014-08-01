@@ -10,9 +10,7 @@ import logic.Stone;
 
 public class Two extends Combination
 {
-	// is it active (checked with isActive)
-	boolean active = false;
-	
+
 	/**
 	 * Constructor
 	 */
