@@ -14,8 +14,6 @@ import logic.Stone;
 
 public abstract class PointsAlgorithm extends Algorithm
 {
-	// multiply defensive score by factor
-	int defenseFactor;
 	
 	// Offensive points for combinations
 	long[] two = new long[14];
@@ -59,35 +57,27 @@ public abstract class PointsAlgorithm extends Algorithm
 	 * Method stays abstract and must be implemented by algorithms implementing this class.
 	 */
 	public abstract MoveSet doMove(Board board, Player player, int turn);
-	
-	/**
-	 * Constructor
-	 */
-	public PointsAlgorithm()
-	{
-
-	}
 
 	/**
 	 * Gets a score based on given values for combinations
 	 */
-	private long getScore(Board board, Player myColor, Player openentColor, boolean firstStone, int turn)
+	private long getScore(Board board, Player player, Player openentColor, boolean firstStone, int turn)
 	{
 		// Start score
 		long score = 0;
 		
 	    // add score for own combinations values
-	    for (int i =0;i<board.getCombinations(myColor).size();i++)  
+	    for (int i =0;i<board.getCombinations(player).size();i++)
 	    {  
-	    	Combination c = board.getCombinations(myColor).get(i); 
-	    	score += getSingleScore(c,true, firstStone, board, turn);
+	    	Combination c = board.getCombinations(player).get(i);
+	    	score += getSingleScore(c,true, firstStone);
 	    }
 	    // decrease score for opponent combinations values 
 	    for (int i =0;i<board.getCombinations(openentColor).size();i++) 
 	    {  
 	    	Combination c = board.getCombinations(openentColor).get(i); 
 	    	//score -= ((getSingleScore(c,false, firstStone, board)) * defenseFactor);
-	    	long singleScore = getSingleScore(c,false, firstStone, board, turn);
+	    	long singleScore = getSingleScore(c,false, firstStone);
 	    	score -= singleScore;
 	    	
 	    	if (c.combinationType > 3)
@@ -103,7 +93,7 @@ public abstract class PointsAlgorithm extends Algorithm
 	/**
 	 * Returns a single score for a combination, used in getScore
 	 */
-	private long getSingleScore(Combination c, boolean myCombination, boolean firstStone, Board board, int turn)
+	private long getSingleScore(Combination c, boolean myCombination, boolean firstStone)
 	{
 
 		if (c.combinationType == 2)
@@ -144,8 +134,10 @@ public abstract class PointsAlgorithm extends Algorithm
 		}
 		else
 		{
-			if (myCombination)
-				return this.six[c.type];
+			if (myCombination){
+				//return this.six[c.type];
+                return 999999;
+            }
 			else
 				return this.defensiveSix[c.type];
 		}
@@ -156,44 +148,73 @@ public abstract class PointsAlgorithm extends Algorithm
 	 * Uses the score system to find the one with the best score.
 	 * @param positions				list of possitions to check
 	 * @param board Board 			board object
-	 * @param myColor int			my color nr				
+	 * @param player int			my color nr
 	 * @param firstStone boolean 	indicates if this is the first stone
 	 * @return Stone				the stone with the best score 
 	 */
-	public Stone getBestStonePosition(ArrayList<Position> positions, Board board, Player myColor, boolean firstStone, int turn)
+	public StonePoints getBestStonePosition(ArrayList<Position> positions, Board board, Player player, boolean firstStone, int turn)
 	{
 		// Get opponent color
-		Player openentColor = Player.getOpponent(myColor);
+		Player openentPlayer = Player.getOpponent(player);
 		
 		// Holding the best stone found
-		Stone bestStone = null;
-		
-	    long bestScore = 0;
+        StonePoints bestStonePoints = null;
 		
 		// for each possible position for first stone
 	    for (int position1=0;position1<positions.size();position1++)
 	    {
 	    	Position position = positions.get(position1);
 	    	
-	    	Stone testStone = new Stone(position.x, position.y, myColor);
+	    	Stone testStone = new Stone(position.x, position.y, player);
 			
 			if (testStone.place(board))
 			{
-				long score = getScore(board,myColor,openentColor, firstStone, turn);
-				score += pointsMatrix[position.y][position.x];
+				long points = getScore(board, player, openentPlayer, firstStone, turn);
+				points += pointsMatrix[position.y][position.x];
 				
-				if (score >= bestScore || bestScore == 0)
+				if (bestStonePoints == null || points >= bestStonePoints.points)
 				{
-					bestStone = testStone;
-					bestScore = score;
+					bestStonePoints = new StonePoints(testStone, points);
 				}
 
 				board.undo(testStone);
 			}
 	    }
 		
-		return bestStone;
+		return bestStonePoints;
 	}
+
+    public MoveSet getBestMoveSet(ArrayList<Position> positions, Board board, Player player, int turn)
+    {
+
+        System.out.println("getBestMoveSet");
+
+        MoveSet bestMoveSet = null;
+        Long bestStonePoints = null;
+
+        for (int position1=0;position1<positions.size();position1++){
+            Position position = positions.get(position1);
+            Stone testStone = new Stone(position.x, position.y, player);
+            if (testStone.place(board)){
+
+                StonePoints stonePoints = getBestStonePosition(positions, board, player, false, turn);
+
+                System.out.println("Points result:" + stonePoints.points);
+
+                if (bestStonePoints == null || stonePoints.points >= bestStonePoints)
+                {
+                    bestMoveSet = new MoveSet(testStone, stonePoints.stone);
+
+                    bestStonePoints =  stonePoints.points;
+                }
+
+                board.undo(testStone);
+
+            }
+        }
+
+        return bestMoveSet;
+    }
 	
 	/**
 	 * Add open positions for a combination to a position list.

@@ -11,8 +11,10 @@ import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
 
 import algorithms.Algorithm;
+import algorithms.HardBot;
 import algorithms.Randoms;
 import algorithms.SimpleBot;
+import logic.Player;
 
 /**
  * Creates the application menu
@@ -71,64 +73,64 @@ public class Menu extends JMenuBar
 		ButtonGroup whitePlayerMenugroup = new ButtonGroup();
 		
 		JRadioButtonMenuItem rbWhite1 = new JRadioButtonMenuItem("Human Player");
-		rbWhite1.addActionListener(new AlgorithmSelectButtonListener(2, null));
+		rbWhite1.addActionListener(new AlgorithmSelectButtonListener(Player.WHITE, null));
 		rbWhite1.setSelected(true);
 		
 		JRadioButtonMenuItem rbWhite2 = new JRadioButtonMenuItem("Randoms");
-		rbWhite2.addActionListener(new AlgorithmSelectButtonListener(2, new Randoms()));
+		rbWhite2.addActionListener(new AlgorithmSelectButtonListener(Player.WHITE, new Randoms()));
 		
 //		JRadioButtonMenuItem rbWhite3 = new JRadioButtonMenuItem("Advanced bot");
-//		rbWhite3.addActionListener(new AlgorithmSelectButtonListener(2,"Advanced bot"));
+//		rbWhite3.addActionListener(new AlgorithmSelectButtonListener(Player.WHITE,"Advanced bot"));
 //		
-//		JRadioButtonMenuItem rbWhite4 = new JRadioButtonMenuItem("Simple bot");
-//		rbWhite4.addActionListener(new AlgorithmSelectButtonListener(2,"Simple bot"));
+		JRadioButtonMenuItem rbWhite4 = new JRadioButtonMenuItem("Simple bot");
+        rbWhite4.addActionListener(new AlgorithmSelectButtonListener(Player.WHITE, new SimpleBot(5)));
 
 		JRadioButtonMenuItem rbWhite5 = new JRadioButtonMenuItem("Hard bot");
-		rbWhite5.addActionListener(new AlgorithmSelectButtonListener(2,new SimpleBot(5)));
+		rbWhite5.addActionListener(new AlgorithmSelectButtonListener(Player.WHITE,new HardBot(5)));
 
 		whitePlayerMenugroup.add(rbWhite1);
 		whitePlayerMenugroup.add(rbWhite2);
 //		whitePlayerMenugroup.add(rbWhite3);
-//		whitePlayerMenugroup.add(rbWhite4);
+		whitePlayerMenugroup.add(rbWhite4);
 		whitePlayerMenugroup.add(rbWhite5);
 
 		
 		whitePlayer.add(rbWhite1);
 		whitePlayer.add(rbWhite2);
 //		whitePlayer.add(rbWhite3);
-//		whitePlayer.add(rbWhite4);
+		whitePlayer.add(rbWhite4);
 		whitePlayer.add(rbWhite5);
 
 		ButtonGroup blackPlayerMenugroup = new ButtonGroup();
 		
 		JRadioButtonMenuItem rbBlack1 = new JRadioButtonMenuItem("Human Player");
-		rbBlack1.addActionListener(new AlgorithmSelectButtonListener(1,null));
+		rbBlack1.addActionListener(new AlgorithmSelectButtonListener(Player.BLACK,null));
 		
 		JRadioButtonMenuItem rbBlack2 = new JRadioButtonMenuItem("Randoms");
-		rbBlack2.addActionListener(new AlgorithmSelectButtonListener(1,new Randoms()));
+		rbBlack2.addActionListener(new AlgorithmSelectButtonListener(Player.BLACK,new Randoms()));
 		
 //		JRadioButtonMenuItem rbBlack3 = new JRadioButtonMenuItem("Advanced bot");
-//		rbBlack3.addActionListener(new AlgorithmSelectButtonListener(1,"Advanced bot"));
+//		rbBlack3.addActionListener(new AlgorithmSelectButtonListener(Player.BLACK,"Advanced bot"));
 //		
-//		JRadioButtonMenuItem rbBlack4 = new JRadioButtonMenuItem("Simple bot");
-//		rbBlack4.addActionListener(new AlgorithmSelectButtonListener(1,"Simple bot"));
+		JRadioButtonMenuItem rbBlack4 = new JRadioButtonMenuItem("Simple bot");
+		rbBlack4.addActionListener(new AlgorithmSelectButtonListener(Player.BLACK,new SimpleBot(5)));
 		
 		JRadioButtonMenuItem rbBlack5 = new JRadioButtonMenuItem("Hard bot");
-		rbBlack5.addActionListener(new AlgorithmSelectButtonListener(1,new SimpleBot(5)));
+		rbBlack5.addActionListener(new AlgorithmSelectButtonListener(Player.BLACK,new HardBot(5)));
 		rbBlack5.setSelected(true);
 		
 		
 		blackPlayerMenugroup.add(rbBlack1);
 		blackPlayerMenugroup.add(rbBlack2);
 //		blackPlayerMenugroup.add(rbBlack3);
-//		blackPlayerMenugroup.add(rbBlack4);
+		blackPlayerMenugroup.add(rbBlack4);
 		blackPlayerMenugroup.add(rbBlack5);
 
 
 		blackPlayer.add(rbBlack1);
 		blackPlayer.add(rbBlack2);
 //		blackPlayer.add(rbBlack3);
-//		blackPlayer.add(rbBlack4);
+		blackPlayer.add(rbBlack4);
 		blackPlayer.add(rbBlack5);
 		
 		
@@ -161,18 +163,18 @@ public class Menu extends JMenuBar
 	
 	class AlgorithmSelectButtonListener implements ActionListener 
 	{
-		int colorNr;
+		Player player;
 		Algorithm algorithm;
 		
-		public AlgorithmSelectButtonListener(int colorNr, Algorithm algorithm)
+		public AlgorithmSelectButtonListener(Player player, Algorithm algorithm)
 		{
-			this.colorNr = colorNr;
+			this.player = player;
 			this.algorithm = algorithm;
 		}
 		
 		public void actionPerformed(ActionEvent e) 
 		{
-			applet.selectAlgorithm(colorNr, algorithm);
+			applet.selectAlgorithm(player, algorithm);
 	    }
 	}
 	

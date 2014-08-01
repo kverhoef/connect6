@@ -13,14 +13,20 @@ public class SimpleBot extends PointsAlgorithm {
 
 	public SimpleBot(int defenseFactor) {
 		
-		defenseFactor = 5;
+		defenseFactor = 2;
 		
 		// Offensive points for combinations
 		int twoScoreAlive = 200;
 		int twoScoreDead = 50;
 		
-		int threeScore = 300;
-		int fourScore = 800;
+		int threeScoreDead = 100;
+        int threeScoreAlive = 300;
+
+		int fourScore = 1800;
+
+        int defensiveFourScore = 99999;
+        int defensiveFiveScore = 99999;
+
 		int fiveScore = 1600;
 		
 		this.two[0] = twoScoreAlive;
@@ -37,33 +43,32 @@ public class SimpleBot extends PointsAlgorithm {
 		this.two[11] = twoScoreDead;
 		this.two[12] = twoScoreDead;
 		this.two[13] = twoScoreAlive;
-		
-		
-		this.three[0] = threeScore;
-		this.three[1] = threeScore;
-		this.three[2] = threeScore;
-		this.three[3] = threeScore;
-		this.three[4] = threeScore;
-		this.three[5] = threeScore;
-		this.three[6] = threeScore;
-		this.three[7] = threeScore;
-		this.three[8] = threeScore;
-		this.three[9] = threeScore;
-		this.three[10] = threeScore;
-		this.three[11] = threeScore;
-		this.three[12] = threeScore;
-		this.three[13] = threeScore;
-		this.three[14] = threeScore;
-		this.three[15] = threeScore;
-		this.three[16] = threeScore;
-		this.three[17] = threeScore;
-		this.three[18] = threeScore;
-		this.three[19] = threeScore;
-		this.three[20] = threeScore;
-		this.three[21] = threeScore;
-		this.three[22] = threeScore;
-		this.three[23] = threeScore;
-		this.three[24] = threeScore;
+
+		this.three[0] = threeScoreAlive;
+		this.three[1] = threeScoreDead;
+		this.three[2] = threeScoreDead;
+		this.three[3] = threeScoreAlive;
+		this.three[4] = threeScoreDead;
+		this.three[5] = threeScoreAlive;
+		this.three[6] = threeScoreDead;
+		this.three[7] = threeScoreDead;
+		this.three[8] = threeScoreAlive;
+		this.three[9] = threeScoreDead;
+		this.three[10] = threeScoreAlive;
+		this.three[11] = threeScoreDead;
+		this.three[12] = threeScoreDead;
+		this.three[13] = threeScoreAlive;
+		this.three[14] = threeScoreDead;
+		this.three[15] = threeScoreDead;
+		this.three[16] = threeScoreDead;
+		this.three[17] = threeScoreDead;
+		this.three[18] = threeScoreDead;
+		this.three[19] = threeScoreDead;
+		this.three[20] = threeScoreDead;
+		this.three[21] = threeScoreDead;
+		this.three[22] = threeScoreDead;
+		this.three[23] = threeScoreDead;
+		this.three[24] = threeScoreDead;
 		
 		
 		this.four[0] = fourScore;
@@ -131,85 +136,85 @@ public class SimpleBot extends PointsAlgorithm {
 		this.defensiveTwo[12] = twoScoreDead * defenseFactor;
 		this.defensiveTwo[13] = twoScoreAlive * defenseFactor;
 		
-		this.defensiveThree[0] = threeScore * defenseFactor;
-		this.defensiveThree[1] = threeScore * defenseFactor;
-		this.defensiveThree[2] = threeScore * defenseFactor;
-		this.defensiveThree[3] = threeScore * defenseFactor;
-		this.defensiveThree[4] = threeScore * defenseFactor;
-		this.defensiveThree[5] = threeScore * defenseFactor;
-		this.defensiveThree[6] = threeScore * defenseFactor;
-		this.defensiveThree[7] = threeScore * defenseFactor;
-		this.defensiveThree[8] = threeScore * defenseFactor;
-		this.defensiveThree[9] = threeScore * defenseFactor;
-		this.defensiveThree[10] = threeScore * defenseFactor;
-		this.defensiveThree[11] = threeScore * defenseFactor;
-		this.defensiveThree[12] = threeScore * defenseFactor;
-		this.defensiveThree[13] = threeScore * defenseFactor;
-		this.defensiveThree[14] = threeScore * defenseFactor;
-		this.defensiveThree[15] = threeScore * defenseFactor;
-		this.defensiveThree[16] = threeScore * defenseFactor;
-		this.defensiveThree[17] = threeScore * defenseFactor;
-		this.defensiveThree[18] = threeScore * defenseFactor;
-		this.defensiveThree[19] = threeScore * defenseFactor;
-		this.defensiveThree[20] = threeScore * defenseFactor;
-		this.defensiveThree[21] = threeScore * defenseFactor;
-		this.defensiveThree[22] = threeScore * defenseFactor;
-		this.defensiveThree[23] = threeScore * defenseFactor;
-		this.defensiveThree[24] = threeScore * defenseFactor;
+		this.defensiveThree[0] = threeScoreAlive * defenseFactor;
+		this.defensiveThree[1] = threeScoreDead * defenseFactor;
+		this.defensiveThree[2] = threeScoreDead * defenseFactor;
+		this.defensiveThree[3] = threeScoreAlive * defenseFactor;
+		this.defensiveThree[4] = threeScoreDead * defenseFactor;
+		this.defensiveThree[5] = threeScoreAlive * defenseFactor;
+		this.defensiveThree[6] = threeScoreDead * defenseFactor;
+		this.defensiveThree[7] = threeScoreDead * defenseFactor;
+		this.defensiveThree[8] = threeScoreAlive * defenseFactor;
+		this.defensiveThree[9] = threeScoreDead * defenseFactor;
+		this.defensiveThree[10] = threeScoreAlive * defenseFactor;
+		this.defensiveThree[11] = threeScoreDead * defenseFactor;
+		this.defensiveThree[12] = threeScoreDead * defenseFactor;
+		this.defensiveThree[13] = threeScoreAlive * defenseFactor;
+		this.defensiveThree[14] = threeScoreDead * defenseFactor;
+		this.defensiveThree[15] = threeScoreDead * defenseFactor;
+		this.defensiveThree[16] = threeScoreDead * defenseFactor;
+		this.defensiveThree[17] = threeScoreDead * defenseFactor;
+		this.defensiveThree[18] = threeScoreDead * defenseFactor;
+		this.defensiveThree[19] = threeScoreDead * defenseFactor;
+		this.defensiveThree[20] = threeScoreDead * defenseFactor;
+		this.defensiveThree[21] = threeScoreDead * defenseFactor;
+		this.defensiveThree[22] = threeScoreDead * defenseFactor;
+		this.defensiveThree[23] = threeScoreDead * defenseFactor;
+		this.defensiveThree[24] = threeScoreDead * defenseFactor;
 		
-		this.defensiveFour[0] = fourScore * defenseFactor;
-		this.defensiveFour[1] = fourScore * defenseFactor;
-		this.defensiveFour[2] = fourScore * defenseFactor;
-		this.defensiveFour[3] = fourScore * defenseFactor;
-		this.defensiveFour[4] = fourScore * defenseFactor;
-		this.defensiveFour[5] = fourScore * defenseFactor;
-		this.defensiveFour[6] = fourScore * defenseFactor;
-		this.defensiveFour[7] = fourScore * defenseFactor;
-		this.defensiveFour[8] = fourScore * defenseFactor;
-		this.defensiveFour[9] = fourScore * defenseFactor;
-		this.defensiveFour[10] = fourScore * defenseFactor;
-		this.defensiveFour[11] = fourScore * defenseFactor;
-		this.defensiveFour[12] = fourScore * defenseFactor;
-		this.defensiveFour[13] = fourScore * defenseFactor;
-		this.defensiveFour[14] = fourScore * defenseFactor;
-		this.defensiveFour[15] = fourScore * defenseFactor;
-		this.defensiveFour[16] = fourScore * defenseFactor;
-		this.defensiveFour[17] = fourScore * defenseFactor;
-		this.defensiveFour[18] = fourScore * defenseFactor;
-		this.defensiveFour[19] = fourScore * defenseFactor;
-		this.defensiveFour[20] = fourScore * defenseFactor;
-		this.defensiveFour[21] = fourScore * defenseFactor;
-		this.defensiveFour[22] = fourScore * defenseFactor;
-		this.defensiveFour[23] = fourScore * defenseFactor;
-		this.defensiveFour[24] = fourScore * defenseFactor;
-		this.defensiveFour[25] = fourScore * defenseFactor;
+		this.defensiveFour[0] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[1] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[2] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[3] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[4] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[5] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[6] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[7] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[8] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[9] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[10] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[11] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[12] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[13] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[14] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[15] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[16] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[17] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[18] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[19] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[20] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[21] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[22] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[23] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[24] = defensiveFourScore * defenseFactor;
+		this.defensiveFour[25] = defensiveFourScore * defenseFactor;
 		
-		this.defensiveFive[0] = fiveScore * defenseFactor;
-		this.defensiveFive[1] = fiveScore * defenseFactor;
-		this.defensiveFive[2] = fiveScore * defenseFactor;
-		this.defensiveFive[3] = fiveScore * defenseFactor;
-		this.defensiveFive[4] = fiveScore * defenseFactor;
-		this.defensiveFive[5] = fiveScore * defenseFactor;
-		this.defensiveFive[6] = fiveScore * defenseFactor;
-		this.defensiveFive[7] = fiveScore * defenseFactor;
-		this.defensiveFive[8] = fiveScore * defenseFactor;
-		this.defensiveFive[9] = fiveScore * defenseFactor;
-		this.defensiveFive[10] = fiveScore * defenseFactor;
-		this.defensiveFive[11] = fiveScore * defenseFactor;
-		this.defensiveFive[12] = fiveScore * defenseFactor;
-		this.defensiveFive[13] = fiveScore * defenseFactor;
-		this.defensiveFive[14] = fiveScore * defenseFactor;
-		this.defensiveFive[15] = fiveScore * defenseFactor;
-		this.defensiveFive[16] = fiveScore * defenseFactor;
-		this.defensiveFive[17] = fiveScore * defenseFactor;
+		this.defensiveFive[0] = defensiveFiveScore * defenseFactor;
+		this.defensiveFive[1] = defensiveFiveScore * defenseFactor;
+		this.defensiveFive[2] = defensiveFiveScore * defenseFactor;
+		this.defensiveFive[3] = defensiveFiveScore * defenseFactor;
+		this.defensiveFive[4] = defensiveFiveScore * defenseFactor;
+		this.defensiveFive[5] = defensiveFiveScore * defenseFactor;
+		this.defensiveFive[6] = defensiveFiveScore * defenseFactor;
+		this.defensiveFive[7] = defensiveFiveScore * defenseFactor;
+		this.defensiveFive[8] = defensiveFiveScore * defenseFactor;
+		this.defensiveFive[9] = defensiveFiveScore * defenseFactor;
+		this.defensiveFive[10] = defensiveFiveScore * defenseFactor;
+		this.defensiveFive[11] = defensiveFiveScore * defenseFactor;
+		this.defensiveFive[12] = defensiveFiveScore * defenseFactor;
+		this.defensiveFive[13] = defensiveFiveScore * defenseFactor;
+		this.defensiveFive[14] = defensiveFiveScore * defenseFactor;
+		this.defensiveFive[15] = defensiveFiveScore * defenseFactor;
+		this.defensiveFive[16] = defensiveFiveScore * defenseFactor;
+		this.defensiveFive[17] = defensiveFiveScore * defenseFactor;
 		
-		this.defensiveSix[0] = 99999;
+		this.defensiveSix[0] = 99999 * defenseFactor;
 	}
 
 	@Override
-	public MoveSet doMove(Board board, Player myColor, int turn) {
+	public MoveSet doMove(Board board, Player player, int turn) {
 		
-		boolean debug = false;
+		boolean debug = true;
 		
 		if (debug)
 			System.out.println("SimpleBot move turn: " + turn);
@@ -220,14 +225,14 @@ public class SimpleBot extends PointsAlgorithm {
 			if (debug)
 				System.out.println("Default move");
 			
-			return new MoveSet(new Stone(9, 9, myColor), null);
+			return new MoveSet(new Stone(9, 9, player), null);
 		}
 		else if (turn == 2){
 			
 			if (debug)
 				System.out.println("Default move");
 			
-			return new MoveSet(new Stone(10, 9, myColor), new Stone(9, 10, myColor));
+			return new MoveSet(new Stone(10, 9, player), new Stone(9, 10, player));
 		}
 		
 		ArrayList<Position> positions = new ArrayList<Position>();
@@ -248,8 +253,7 @@ public class SimpleBot extends PointsAlgorithm {
 					positions.add(Direction.getPosInDirection(x, y, Direction.LEFT_UP, 1));
 					positions.add(Direction.getPosInDirection(x, y, Direction.RIGHT_DOWN, 1));
 					positions.add(Direction.getPosInDirection(x, y, Direction.RIGHT_UP, 1));
-					
-					
+
 					positions.add(Direction.getPosInDirection(x, y, Direction.LEFT, 2));
 					positions.add(Direction.getPosInDirection(x, y, Direction.UP, 2));
 					positions.add(Direction.getPosInDirection(x, y, Direction.DOWN, 2));
@@ -264,15 +268,16 @@ public class SimpleBot extends PointsAlgorithm {
 			}
 		}
 		
-		Stone stone1 = getBestStonePosition(positions,board,myColor, true, turn);
-		board.place(stone1);
-		Stone stone2 = getBestStonePosition(positions,board,myColor, false, turn);
-		board.undo(stone1);
-		
-		assert stone1 != null;
-		assert stone2 != null;
-		
-		return new MoveSet(stone1, stone2);
+		StonePoints stonePoints1 = getBestStonePosition(positions,board,player, true, turn);
+		board.place(stonePoints1.stone);
+        StonePoints stonePoints2 = getBestStonePosition(positions,board,player, false, turn);
+		board.undo(stonePoints2.stone);
+
+		assert stonePoints1.stone != null;
+		assert stonePoints2.stone != null;
+
+		return new MoveSet(stonePoints1.stone, stonePoints2.stone);
+
 	}
 
 }

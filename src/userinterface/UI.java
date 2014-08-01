@@ -35,7 +35,9 @@ public class UI extends JApplet{
 	BoardObject boardObject;
 	
 	public UI(){
-		
+
+        System.out.println("Starting UI");
+
 		this.setName("Connect6");
         
 		//Set up the content pane.
@@ -53,10 +55,7 @@ public class UI extends JApplet{
         // Container bounds
         stoneContainer.setBounds(0, 0, 650,672);
         this.add(stoneContainer);
-	
-        
-        
-        
+
 		Menu menu = new Menu(this);
 		this.setJMenuBar(menu);
 		
@@ -77,13 +76,13 @@ public class UI extends JApplet{
 		this.setSize(new Dimension(650,700));
 	}
 	
-	public void selectAlgorithm(int colorNr, Algorithm algorithm){
-		System.out.println("Set algorithm " + algorithm + " for player " + colorNr);
+	public void selectAlgorithm(Player player, Algorithm algorithm){
+		System.out.println("Set algorithm " + algorithm + " for player " + player);
 		
-		if (colorNr == 1){
+		if (player.equals(Player.BLACK)){
 			this.player1Algorithm = algorithm;
 		}
-		else if (colorNr == 2){
+		else {
 			this.player2Algorithm = algorithm;
 		}
 	}
