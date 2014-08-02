@@ -127,12 +127,12 @@ public class Two extends Combination
 		}; // dead
 		
 		// case 2: 1open
-		// type 5: completly open
+		// type 5: completely open
 		int[][] two5 = 
 		{
 			{0,0,2,2,2,1,2,1,2,2,2}
 		}; // alive
-		// type 6: completly open
+		// type 6: completely open
 		int[][] two6 = 
 		{
 			{0,0,0,0,3,1,2,1,2,2,2}
@@ -217,13 +217,14 @@ public class Two extends Combination
 		
 		if (preCheck(board, direction, 5, stone1))
 		{
-			
+
 			// if pattern matched, it will return the matched number
 			int patternMatchNr = twoPatterns.checkPatterns(board.field, x, y,rotate45degrees);
 			
 			// check patterns
 			if (twoPatterns.checkPatterns(board.field, x, y,rotate45degrees) != -1)
 			{
+
 				Position posStone2;
 				
 				// case 1: next to each other
@@ -231,25 +232,23 @@ public class Two extends Combination
 				{
 					posStone2 = Direction.getPosInDirection(x, y, direction, 1);
 				}
-				// case 2: 1open
+				// case 2: 1 open
 				else if (patternMatchNr == 5 || patternMatchNr == 6 || patternMatchNr == 7 || patternMatchNr == 8 || patternMatchNr == 9)
 				{
 					posStone2 = Direction.getPosInDirection(x, y, direction, 2);
 				}
-				// case 3: 2open
-				else
-				{
+				// case 3: 2 open
+				else {
 					posStone2 = Direction.getPosInDirection(x, y, direction, 3);
 				}
 				
 				Stone stone2 = board.getStone(posStone2.x, posStone2.y);
-				
-				
+
 				Two c = new Two(stone1,stone2,direction,patternMatchNr);
 				stone1.combinations[direction] = c;
 				stone2.combinations[direction] = c;
-				
-				Combination.addCombination(board, stone1.player, c,stone1,stone2);
+
+				Combination.addCombination(board, stone1.player, c, stone1, stone2);
 				
 				return true;
 				

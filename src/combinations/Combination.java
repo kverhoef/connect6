@@ -54,25 +54,28 @@ public class Combination
 	
 	/**
 	 * A simple check to see if a combination is even possible
-	 * A openents stone is searched in a row
+	 * A opponents stone is searched in a row
 	 * Speeds up the pattern selection
 	 * Returns false if no combination can be used
 	 */
 	public static boolean preCheck(Board b, int direction, int length, Stone stone)
 	{
-		if (stone == null)
+		if (stone == null){
 			return true;
+        }
 		
-		Player openentColor = Player.getOpponent(stone.player);
+		Player openent = Player.getOpponent(stone.player);
 		
 		// check for each position of the given length
 		for (int d = 1;d<length;d++)
 		{
 			Position tryPos = Direction.getPosInDirection(stone.x, stone.y, direction, d);
-			if (tryPos == null)
+			if (tryPos == null){
 				return false;
-			if (b.field[tryPos.y][tryPos.x] == openentColor)
+            }
+			if (b.field[tryPos.y][tryPos.x] == openent){
 				return false;
+            }
 		}
 		
 		return true;

@@ -161,10 +161,14 @@ public abstract class PointsAlgorithm extends Algorithm
         StonePoints bestStonePoints = null;
 		
 		// for each possible position for first stone
-	    for (int position1=0;position1<positions.size();position1++)
-	    {
-	    	Position position = positions.get(position1);
-	    	
+        for (Position position : positions){
+
+            // Empty possitions should not be passed
+            if (position == null){
+                System.out.println("Empty position passed");
+                continue;
+            }
+
 	    	Stone testStone = new Stone(position.x, position.y, player);
 			
 			if (testStone.place(board))
@@ -192,8 +196,8 @@ public abstract class PointsAlgorithm extends Algorithm
         MoveSet bestMoveSet = null;
         Long bestStonePoints = null;
 
-        for (int position1=0;position1<positions.size();position1++){
-            Position position = positions.get(position1);
+        for (Position position : positions){
+
             Stone testStone = new Stone(position.x, position.y, player);
             if (testStone.place(board)){
 

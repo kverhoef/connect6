@@ -60,9 +60,7 @@ public class HelpLines extends JPanel
 					Two two = (Two)c;
 					pos1 = StoneObject.getFieldPosition(two.stone1.x,two.stone1.y);
 			 		pos2 = StoneObject.getFieldPosition(two.stone2.x,two.stone2.y);
-			 		
-			 		color = Color.darkGray;
-			 		
+
 			 		if (two.type == 0 || two.type == 3 || two.type == 5 || two.type == 8 || two.type == 10 || two.type == 13)
 			 		{
 			 			color = Color.BLUE;

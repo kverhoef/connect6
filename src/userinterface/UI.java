@@ -67,9 +67,15 @@ public class UI extends JApplet{
 		this.add(boardObject);
 		
 //		player1Algorithm = new Randoms();
-		player2Algorithm = new SimpleBot(1);
-		
-		//this.repaint();
+//		player2Algorithm = new SimpleBot(1);
+
+        player1Algorithm = new SimpleBot(5);
+
+        this.setVisible(true);
+
+        step();
+
+
 	}
 	
 	public void init(){
@@ -139,6 +145,11 @@ public class UI extends JApplet{
 		}
 		else {
 			inputEnabled = true;
+
+            if (swingTimer != null){
+                swingTimer.stop();
+            }
+
 		}
 		
 		drawStones();
@@ -146,32 +157,27 @@ public class UI extends JApplet{
 	}
 	
 	public void handleAlgorithmStep(Algorithm algorithm, Player player){
-		
-		if (swingTimer != null){
-			swingTimer.stop();
-		}
-		
+
 		MoveSet moveSet = algorithm.doMove(board, player, controller.turn);
 		
 		moveSet.stone1.stoneNr = this.controller.getNextStoneNr();
 		board.place(moveSet.stone1);
 		controller.addStone(moveSet.stone1);
-		
-		moveSet.stone2.stoneNr = this.controller.getNextStoneNr();
-		board.place(moveSet.stone2);
-		controller.addStone(moveSet.stone2);
+
+        if (moveSet.stone2 != null){
+            moveSet.stone2.stoneNr = this.controller.getNextStoneNr();
+            board.place(moveSet.stone2);
+            controller.addStone(moveSet.stone2);
+        }
 		
 		if (this.board.gameEnded){
 			inputEnabled = false;
 			System.out.println("Game ended");
 		}
 		else {
-			// Continue algorithms
-			swingTimer = new Timer(1000, listener);
-			swingTimer.start();
+			step();
 		}
-		
-		
+
 	}
 	
 	public void doStep(){

@@ -24,15 +24,21 @@ public class PatternCollection
 	 */
 	public int checkPatterns(Player[][] field, int patternX, int patternY, boolean rotated45degrees)
 	{
+        int resultPatternIndex = -1;
+
 		for (int i = 0;i<patterns.size();i++)
 		{
 			Pattern p = patterns.get(i);
+
 			if (p.resultMustbe == p.checkPattern(field, patternX, patternY,rotated45degrees))
 			{
-				return i;
+
+                resultPatternIndex = i;
+                break;
 			}
 		}
-		return -1;
+
+		return resultPatternIndex;
 	}
 	
 	/**

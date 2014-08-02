@@ -12,9 +12,6 @@ public class Board
 	// Huidige speelveld
 	public Player[][] field = new Player[19][19];
 	
-	// zwart 1
-	// wit 2
-	
 	// when a 6 has formed, the game ends en this will be true
 	public boolean gameEnded = false;
 	
@@ -152,7 +149,7 @@ public class Board
 
 	/**
 	 * Analyze and updates combinations of the board.
-	 * Is used after insert and after undo. It check in 4 directions: vertical, 
+	 * Is used after insert and after undo. It checks in 4 directions: vertical,
 	 * horizontal and both diagonal ways. It finds the first and last stone 
 	 * in the direction, to check if a combination exists.
 	 * 

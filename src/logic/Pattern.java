@@ -79,12 +79,11 @@ public class Pattern
 		int xFrom = patternX - ((pattern[0].length - 1) / 2); 	// x startPosition in field
 		int yTo = yFrom + pattern.length;
 		int xTo = xFrom + pattern[0].length;
-		
-		// Kleurnummer van de speler
-		Player myColorNumber = field[patternY][patternX];
 
-		for (int y=yFrom;y < yTo;y++)
-		{
+		Player player = field[patternY][patternX];
+
+		for (int y=yFrom;y < yTo;y++){
+
 			for (int x=xFrom;x < xTo;x++)
 			{
 				int pX = x - xFrom; // pattern x
@@ -108,14 +107,15 @@ public class Pattern
 						fX -= pY - ((pattern.length - 1) / 2);
 					}
 				}
-				
+
+                int patternValue = pattern[pY][pX];
+
 				try
 				{
 					Player fieldValue = field[fY][fX];
-					int patternValue = pattern[pY][pX];
-					
+
 					// 1 must be my color
-					if (patternValue == 1 && fieldValue != myColorNumber)
+					if (patternValue == 1 && fieldValue != player)
 						return false;
 					
 					// 2 must be open
@@ -123,16 +123,21 @@ public class Pattern
 						return false;
 					
 					// 3 must be other color
-					if (patternValue == 3 && (fieldValue == myColorNumber || fieldValue == null))
+					if (patternValue == 3 && (fieldValue == player || fieldValue == null))
 						return false;
 				}
 				catch (ArrayIndexOutOfBoundsException e)
 				{
 					// Pattern valt buiten het veld, 
-					// als de pattern waarde geen 0 is
+					// als de pattern waarde geen 0 is of blocked
 					// kan de pattern niet.
-					if (pattern[pY][pX] != 0)
-						return false;
+//					if (pattern[pY][pX] != 0)
+//						return false;
+                    // {0,0,0,3,2,1,1,2,2,2,0}
+
+                    if (patternValue != 0 && patternValue != 3){
+                        return false;
+                    }
 				}
 			
 			}
